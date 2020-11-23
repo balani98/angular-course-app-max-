@@ -3,12 +3,24 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-       <app-recipes  *ngIf="loadedFeature ==='recipe'"></app-recipes>
-       <app-shopping-list *ngIf="loadedFeature !=='recipe'"></app-shopping-list>
+       <!-- <app-recipes  *ngIf="loadedFeature ==='recipe'"></app-recipes>
+       <app-shopping-list *ngIf="loadedFeature !=='recipe'"></app-shopping-list> -->
+       <router-outlet></router-outlet>
     </div>
     <div class="col-md-12">
-       <p appBasicHighlight>I am Styled</p>
-       <p appBetterHighlight>I am Styled in a better way by using Renderer 2</p>
+       <p appBasicHighlight >I am Styled</p>
+       <p [appBetterHighlight]="'red'"  defaultColor="aqua">I am Styled in a better way by using Renderer 2</p>
+    </div>
+    <div class="col-md-12"*ngFor="let number of numbers">
+       <div  *appUnless="number % 2===0">{{number}}</div>
+    </div>
+    <!-- implementation of ng switch-->
+    <!--  ngSwitch is used as property binding  -->
+    <div class="col-md-12" [ngSwitch] = "switchValue"> 
+          <!--  ngSwitchCVase  is used as structural directive -->
+          <p *ngSwitchCase = "1">Value is 1</p>
+          <p *ngSwitchCase = "2">Value is 2</p>
+          <p *ngSwitchDefault>Value is {{switchValue}},bbbb</p>
     </div>
  </div>
 </div>
